@@ -407,7 +407,7 @@ document.addEventListener('DOMContentLoaded', () => {
      6) TYPING EFFECT — MAIN MESSAGE
      --------------------------------------------------------- */
   const fullMessage =
-`Happy Friendship Anniversary to My Ninipie!! ❤️🤗
+`Happy Friendship Anniversary My Bacchhaaaaa!! ❤️🤗
 
 This year our bond is turning into 4 years and the time and the memories we created were the bestttest ever, just like you 💖
 
@@ -415,9 +415,9 @@ No doubt many problems were there and even though I made many mistakes and hurt 
 
 But the time with you was the bestttest. How we grew up together and how we spent time together means everything to me 🫂✨
 
-From my best friend to my girlfriend and my future wifeyyy 💍❤️
+From my best friend to my girlfriend and at the end my future wifeyyy 💍❤️
 
-All those moments—from confessing love to making this beautiful relationship—were the happiest moments of my life 🥹💖
+All those moments from confessing love to making this beautiful relationship were the happiest moments of my life 🥹💖
 
 I hope this becomes our never-ending love story and our unbreakable bond forever ♾️❤️`;
 
