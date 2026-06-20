@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+<title>Happy Anniversary, Ninipie ❤️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============================= -->
+<!-- CINEMATIC NEBULA BACKGROUND -->
+<!-- Fixed behind all content: looping video base, color wash, -->
+<!-- drifting nebula blobs, fog layer, canvas starfield/bokeh, vignette -->
+<!-- ============================= -->
+<div id="cinematic-bg" aria-hidden="true">
+  <video
+    id="bgVideo"
+    class="bg-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+    poster="video/beach-night-poster.jpg">
+    <source src="video/beach-night.mp4" type="video/mp4">
+  </video>
+  <div class="bg-video-wash"></div>
+  <div class="nebula-blob b1"></div>
+  <div class="nebula-blob b2"></div>
+  <div class="nebula-blob b3"></div>
+  <div class="nebula-blob b4"></div>
+  <div class="fog-layer"></div>
+  <canvas id="starfield"></canvas>
+  <div class="vignette"></div>
+</div>
+
+<!-- ============================= -->
+<!-- LOADING SCREEN -->
+<!-- ============================= -->
+<div id="loader">
+  <div class="loader-hearts" aria-hidden="true">
+    <span>❤️</span><span>💖</span><span>❤️</span><span>💕</span><span>❤️</span>
+  </div>
+  <p class="loader-text">Loading something special for my Ninipie... <span class="loader-heart">❤️</span></p>
+  <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+</div>
+
+<!-- Ambient floating hearts that live across the whole site -->
+<div id="ambient-hearts" aria-hidden="true"></div>
+
+<!-- ============================= -->
+<!-- NAV DOTS (scroll progress) -->
+<!-- ============================= -->
+<nav class="dot-nav" aria-label="Section navigation">
+  <a href="#hero" class="dot active" data-label="Start"></a>
+  <a href="#countdown" class="dot" data-label="Countdown"></a>
+  <a href="#gallery" class="dot" data-label="Memories"></a>
+  <a href="#message" class="dot" data-label="Letter"></a>
+  <a href="#beauty" class="dot" data-label="Ninuuu"></a>
+  <a href="#reasons" class="dot" data-label="Reasons"></a>
+  <a href="#lovemeter" class="dot" data-label="Love Meter"></a>
+  <a href="#proposal" class="dot" data-label="Forever"></a>
+</nav>
+
+<main>
+
+  <!-- ============================= -->
+  <!-- 2) HERO SECTION -->
+  <!-- ============================= -->
+  <section id="hero" class="section hero">
+    <div class="hero-bg"></div>
+    <div class="hero-particles" aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <p class="eyebrow">Four years, one love story</p>
+      <h1 class="hero-title">
+        Happy Friendship<br>Anniversary to My<br><span class="script">Ninipie</span> <span class="heartbeat">❤️</span>
+      </h1>
+      <p class="hero-subtitle">4 years of memories, love, friendship, and forever to go 💖</p>
+      <button class="cta-button" id="beginJourneyBtn">
+        <span>Tap to Begin Our Journey</span> <span class="sparkle">✨</span>
+      </button>
+    </div>
+
+    <div class="scroll-indicator" aria-hidden="true">
+      <span class="scroll-mouse"></span>
+      <span class="scroll-text">scroll</span>
+    </div>
+  </section>
+
+  <!-- ============================= -->
+  <!-- 3) COUNTDOWN SECTION -->
+  <!-- ============================= -->
+  <section id="countdown" class="section countdown-section reveal">
+    <h2 class="section-heading">Our Special Day Countdown <span>⏳❤️</span></h2>
+    <p class="section-sub">Counting every second closer to you</p>
+
+    <div class="timer-grid">
+      <div class="timer-card glass">
+        <span class="timer-num" id="t-days">00</span>
+        <span class="timer-label">Days</span>
+      </div>
+      <div class="timer-card glass">
+        <span class="timer-num" id="t-hours">00</span>
+        <span class="timer-label">Hours</span>
+      </div>
+      <div class="timer-card glass">
+        <span class="timer-num" id="t-minutes">00</span>
+        <span class="timer-label">Minutes</span>
+      </div>
+      <div class="timer-card glass">
+        <span class="timer-num" id="t-seconds">00</span>
+        <span class="timer-label">Seconds</span>
+      </div>
+    </div>
+
+    <p class="its-our-day" id="itsOurDay">It's Our Day ❤️</p>
+  </section>
+
+  <!-- ============================= -->
+  <!-- 4) MEMORY GALLERY SECTION -->
+  <!-- ============================= -->
+  <section id="gallery" class="section gallery-section reveal">
+    <h2 class="section-heading">Our Beautiful Memories Together <span>📸</span></h2>
+    <p class="section-sub">Every photo, a heartbeat we kept</p>
+
+    <div class="gallery-grid" id="galleryGrid">
+      <!-- 12 placeholder images, replace src in /images/ -->
+      <div class="gallery-item"><img src="images/photo1.jpg" alt="Memory 1" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/photo2.jpg" alt="Memory 2" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/photo3.jpg" alt="Memory 3" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/photo4.jpg" alt="Memory 4" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/photo5.jpg" alt="Memory 5" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/photo6.jpg" alt="Memory 6" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/photo7.jpg" alt="Memory 7" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/photo8.jpg" alt="Memory 8" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/photo9.jpg" alt="Memory 9" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/photo10.jpg" alt="Memory 10" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/photo11.jpg" alt="Memory 11" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/photo12.jpg" alt="Memory 12" loading="lazy"></div>
+    </div>
+  </section>
+
+  <!-- Lightbox modal -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+    <img src="" alt="" id="lightboxImg">
+  </div>
+
+  <!-- ============================= -->
+  <!-- 5) MAIN MESSAGE SECTION -->
+  <!-- ============================= -->
+  <section id="message" class="section message-section reveal">
+    <h2 class="section-heading">A Letter For You <span>💌</span></h2>
+    <div class="glass message-card">
+      <p class="typing-text" id="typingText"></p>
+    </div>
+  </section>
+
+  <!-- ============================= -->
+  <!-- 6) BEAUTY APPRECIATION SECTION -->
+  <!-- ============================= -->
+  <section id="beauty" class="section beauty-section reveal">
+    <div class="beauty-sparkles" aria-hidden="true"></div>
+    <h2 class="section-heading">My Beautiful <span class="script">Ninuuuu</span> <span>🌸</span></h2>
+
+    <div class="glass beauty-card glow-card">
+      <p>Haayee you're the prettiest Ninuuu I have ever seen 😍❤️</p>
+      <p>The cuteness of my cutuuu Ninuuu is on another level yaarrr 🥹💖</p>
+      <p>Every single even the random photos of yours are just like heaven for me 🫶✨</p>
+    </div>
+  </section>
+
+  <!-- ============================= -->
+  <!-- 7) REASONS I LOVE YOU SECTION -->
+  <!-- ============================= -->
+  <section id="reasons" class="section reasons-section reveal">
+    <h2 class="section-heading">My Cutu Ninuu's things<span>❤️</span></h2>
+    <p class="section-sub">Tap or hover each card</p>
+
+    <div class="flip-grid">
+      <div class="flip-card">
+        <div class="flip-inner">
+          <div class="flip-front glass"><span class="flip-emoji">😊</span><span>Your Smile</span></div>
+          <div class="flip-back glass">Your smile lights up every single second for me😊</div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-inner">
+          <div class="flip-front glass"><span class="flip-emoji">🥹</span><span>Your Cuteness</span></div>
+          <div class="flip-back glass">Your cuteness is honestly unmatched, no contest 🥹</div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-inner">
+          <div class="flip-front glass"><span class="flip-emoji">🤗</span><span>Your Care</span></div>
+          <div class="flip-back glass">The way you care for me, always, means the world 🤗</div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-inner">
+          <div class="flip-front glass"><span class="flip-emoji">❤️</span><span>Your Loyalty</span></div>
+          <div class="flip-back glass">You've stood by me through everything, always loyal ❤️</div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-inner">
+          <div class="flip-front glass"><span class="flip-emoji">💖</span><span>Your Love</span></div>
+          <div class="flip-back glass">Your love feels like home, every single time 💖</div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-inner">
+          <div class="flip-front glass"><span class="flip-emoji">✨</span><span>Everything About You</span></div>
+          <div class="flip-back glass">Honestly just everything about you is bestessttt for me✨</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= -->
+  <!-- 8) LOVE METER SECTION -->
+  <!-- ============================= -->
+  <section id="lovemeter" class="section lovemeter-section reveal">
+    <h2 class="section-heading">My Love For You My Darling<span>❤️</span></h2>
+
+    <div class="glass lovemeter-card">
+      <p>I love youu my cutuuu bacchuuu, my cutuu Ninipieee ❤️🤗</p>
+      <p>My love for you grows every single second ⏳💖</p>
+      <p>And it is even bigger than the size of the universe 🌌❤️</p>
+      <p>As you already know that very well 😘✨</p>
+
+      <div class="meter-wrap">
+        <div class="meter-track">
+          <div class="meter-fill" id="meterFill"></div>
+        </div>
+        <p class="meter-label">Love Level: <span class="infinity-symbol">Infinite ♾️%</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= -->
+  <!-- 9) HIDDEN SURPRISE TRIGGER -->
+  <!-- ============================= -->
+  <section class="section secret-section reveal">
+    <p class="secret-hint">There's a secret hidden here... find it 👀</p>
+    <button class="secret-heart" id="secretHeart" aria-label="Secret surprise">❤️</button>
+  </section>
+
+  <!-- Surprise popup overlay -->
+  <div class="popup-overlay" id="surprisePopup">
+    <div class="popup-box glass">
+      <p>Surpriseeee ❤️<br>No matter what happens,<br>I will always be there foryou,<br>every single time. ♾️💖</p>
+      <button class="popup-close" id="surpriseClose">Close</button>
+    </div>
+  </div>
+
+  <!-- ============================= -->
+  <!-- 10) FINAL PROPOSAL SECTION -->
+  <!-- ============================= -->
+  <section id="proposal" class="section proposal-section reveal">
+    <div class="proposal-bg" aria-hidden="true"></div>
+    <h2 class="proposal-title">You + Me = <span class="script">Forever</span> ❤️</h2>
+    <p class="proposal-question">Will you continue being my forever best friend, girlfriend, and future wife? 🥹💍</p>
+    <button class="yes-button" id="yesButton">Yes ❤️</button>
+  </section>
+
+  <!-- Final proposal popup -->
+  <div class="popup-overlay" id="finalPopup">
+    <div class="popup-box glass final-popup">
+      <p class="final-popup-text">I love you forever Ninipie ❤️</p>
+      <button class="popup-close" id="finalClose">Close</button>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>Made with ❤️ for my Ninipie, forever and always.</p>
+  </footer>
+
+</main>
+
+<!-- Confetti canvas -->
+<canvas id="confettiCanvas"></canvas>
+
+<script src="script.js"></script>
+</body>
+</html>
