@@ -407,7 +407,7 @@ document.addEventListener('DOMContentLoaded', () => {
      6) TYPING EFFECT — MAIN MESSAGE
      --------------------------------------------------------- */
   const fullMessage =
-`Happy Friendship Anniversary My Bacchhaaaaa!! ❤️🤗
+`Happy Friendship Anniversary My Baccchaaaaa!! ❤️🤗
 
 This year our bond is turning into 4 years and the time and the memories we created were the bestttest ever, just like you 💖
 
@@ -415,7 +415,7 @@ No doubt many problems were there and even though I made many mistakes and hurt 
 
 But the time with you was the bestttest. How we grew up together and how we spent time together means everything to me 🫂✨
 
-From my best friend to my girlfriend and at the end my future wifeyyy 💍❤️
+From my best friend to my girlfriend and my future wifeyyy 💍❤️
 
 All those moments from confessing love to making this beautiful relationship were the happiest moments of my life 🥹💖
 
@@ -490,6 +490,11 @@ I hope this becomes our never-ending love story and our unbreakable bond forever
 
   /* ---------------------------------------------------------
      9) HIDDEN SURPRISE — double tap / double click heart
+     A single guarded "trigger" function prevents this from firing
+     twice when a touch device fires both our manual touchend
+     double-tap detection AND a synthetic dblclick for the same
+     interaction. A quick wiggle on the first tap gives feedback
+     so people know to tap again.
      --------------------------------------------------------- */
   const secretHeart = document.getElementById('secretHeart');
   const surprisePopup = document.getElementById('surprisePopup');
@@ -505,17 +510,30 @@ I hope this becomes our never-ending love story and our unbreakable bond forever
   }
 
   if (secretHeart) {
-    secretHeart.addEventListener('dblclick', openSurprise);
+    let lastTriggerTime = 0;
+    function triggerSurprise(){
+      const now = Date.now();
+      if (now - lastTriggerTime < 600) return; // guard against double-firing
+      lastTriggerTime = now;
+      openSurprise();
+    }
 
-    // Mobile double-tap detection
+    secretHeart.addEventListener('dblclick', triggerSurprise);
+
+    // Mobile double-tap detection with a forgiving window + first-tap feedback
     let lastTap = 0;
     secretHeart.addEventListener('touchend', (e) => {
       const now = Date.now();
-      if (now - lastTap < 350) {
+      if (now - lastTap < 600) {
         e.preventDefault();
-        openSurprise();
+        triggerSurprise();
+        lastTap = 0; // reset so a third quick tap doesn't immediately re-trigger
+      } else {
+        // First tap: small wiggle to hint "tap again"
+        secretHeart.classList.add('tapped-once');
+        setTimeout(() => secretHeart.classList.remove('tapped-once'), 400);
+        lastTap = now;
       }
-      lastTap = now;
     });
   }
   if (surpriseClose) surpriseClose.addEventListener('click', closeSurprise);
