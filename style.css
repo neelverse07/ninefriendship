@@ -683,15 +683,33 @@ button{ font-family: inherit; cursor:pointer; border:none; background:none; }
 /* =========================================================
    SECRET SECTION
    ========================================================= */
-.secret-section{ padding: 70px 20px; }
-.secret-hint{ color: var(--color-text-soft); margin-bottom: 18px; font-size:0.9rem; opacity:0.7; }
+.secret-section{ padding: 90px 20px; }
+.secret-hint{ color: var(--color-text-soft); margin-bottom: 22px; font-size:0.9rem; opacity:0.75; }
 .secret-heart{
-  font-size: 2.4rem;
+  font-size: 2.6rem;
+  width: 84px;
+  height: 84px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   animation: pulse 1.6s ease-in-out infinite;
   transition: transform 0.2s ease;
   filter: drop-shadow(0 0 14px rgba(255,79,166,0.55));
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 .secret-heart:active{ transform: scale(0.85); }
+.secret-heart.tapped-once{
+  animation: secretWiggle 0.4s ease;
+}
+@keyframes secretWiggle{
+  0%, 100%{ transform: scale(1) rotate(0deg); }
+  30%{ transform: scale(1.15) rotate(-8deg); }
+  60%{ transform: scale(1.15) rotate(8deg); }
+}
 
 /* =========================================================
    POPUPS (surprise + final)
